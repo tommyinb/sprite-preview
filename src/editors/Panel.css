@@ -1,0 +1,5 @@
+.editors-Panel {
+  position: relative;
+  width: calc(800px * 2189 / 2653);
+  height: 800px;
+}

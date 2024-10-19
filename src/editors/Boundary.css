@@ -1,0 +1,63 @@
+.editors-Boundary {
+  .left,
+  .right,
+  .top,
+  .bottom {
+    position: absolute;
+    user-select: none;
+
+    &::after {
+      position: absolute;
+      background-color: #00ffff;
+      content: "";
+    }
+
+    &.dragging {
+      background-color: #00ffff44;
+    }
+  }
+
+  .left,
+  .right {
+    top: 0;
+    bottom: 0;
+    width: 15px;
+
+    &::after {
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+  }
+
+  .left {
+    translate: -7px 0;
+  }
+
+  .right {
+    translate: 7px 0;
+  }
+
+  .top,
+  .bottom {
+    left: 0;
+    right: 0;
+    height: 15px;
+
+    &::after {
+      top: 7px;
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+  }
+
+  .top {
+    translate: 0 -7px;
+  }
+
+  .bottom {
+    translate: 0 7px;
+  }
+}

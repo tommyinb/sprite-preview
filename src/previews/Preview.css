@@ -1,0 +1,9 @@
+.previews-Preview {
+  background-image: url(./preview.png);
+  background-size: cover;
+  overflow: hidden;
+
+  .panel {
+    opacity: 0.5;
+  }
+}
