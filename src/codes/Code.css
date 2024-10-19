@@ -1,3 +1,5 @@
 .codes-Code {
-  width: 300px;
+  max-height: 800px;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
