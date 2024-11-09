@@ -1,3 +1,41 @@
 .App {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #333;
+
+  > .content {
+    display: flex;
+    gap: 5px;
+
+    .preview,
+    .editor,
+    .code {
+      flex: 1 0;
+    }
+
+    @media (max-aspect-ratio: 3/2) {
+      flex-wrap: wrap;
+
+      .preview,
+      .editor {
+        flex-basis: 45%;
+      }
+
+      .code {
+        flex-basis: 95%;
+        min-height: max(200px, 30vh);
+      }
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      .preview,
+      .editor {
+        flex-basis: 100%;
+      }
+    }
+  }
 }

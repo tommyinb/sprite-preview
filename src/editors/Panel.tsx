@@ -2,9 +2,9 @@ import { useContext, useMemo, useRef, useState } from "react";
 import { AppContext } from "../AppContext";
 import { Boundary } from "./Boundary";
 import { Drag } from "./drag";
-import "./Panel.css";
 import { PanelContext } from "./PanelContext";
 import { Part } from "./Part";
+import { useStopTouchMove } from "./useStopTouchMove";
 
 export function Panel({ className }: Props) {
   const { input, setInput } = useContext(AppContext);
@@ -16,9 +16,11 @@ export function Panel({ className }: Props) {
     start: { x: 0, y: 0 },
   });
 
+  useStopTouchMove(ref, !!drag.target);
+
   return (
     <div
-      className={`editors-Panel ${className}`}
+      className={className}
       ref={ref}
       onPointerDown={(event) => ref.current!.setPointerCapture(event.pointerId)}
       onPointerMove={(event) => {
@@ -103,7 +105,16 @@ export function Panel({ className }: Props) {
         setDrag({ target: undefined, start: { x: 0, y: 0 } })
       }
     >
-      <PanelContext.Provider value={useMemo(() => ({ drag, setDrag }), [drag])}>
+      <PanelContext.Provider
+        value={useMemo(
+          () => ({
+            ref,
+            drag,
+            setDrag,
+          }),
+          [drag]
+        )}
+      >
         <Boundary />
 
         {input.parts.map((part) => (

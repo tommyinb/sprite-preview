@@ -12,15 +12,17 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider
-        value={useMemo(() => ({ input, setInput }), [input])}
-      >
-        <Preview />
+      <div className="content">
+        <AppContext.Provider
+          value={useMemo(() => ({ input, setInput }), [input])}
+        >
+          <Editor className="editor" />
 
-        <Editor />
+          <Preview className="preview" />
 
-        <Code />
-      </AppContext.Provider>
+          <Code className="code" />
+        </AppContext.Provider>
+      </div>
     </div>
   );
 }

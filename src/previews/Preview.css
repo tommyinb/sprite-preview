@@ -1,9 +1,26 @@
 .previews-Preview {
+  position: relative;
   background-image: url(./preview.png);
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   overflow: hidden;
 
-  .panel {
-    opacity: 0.5;
+  .content {
+    position: relative;
+    padding-top: calc((800 / 660) * 100%);
+
+    .panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+    }
+  }
+
+  .title {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    pointer-events: none;
+    user-select: none;
   }
 }
